@@ -1,4 +1,8 @@
-const express = require("express");
-const mongoose = require("mongoose");
+import express from 'express';
+import mongoose from 'mongoose'
 
-const app = express();
+const dbURI = 'mongodb://localhost:27017/mydatabase';
+const app = express()
+const port = 3000;
+
+mongoose.connect(dbURI,{useNewUrlParser:true,useUnifiedTopology:true});
