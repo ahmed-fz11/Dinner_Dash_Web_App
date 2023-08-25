@@ -1,32 +1,44 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const orderSchema = new mongoose.Schema({
-    status:{
-        type:String,
-        enum: ['ordered','paid','collected','completed']
-    },
-    price:{
-        type:Number,
-        min:0,
-    },
-    date:Date,
-    user: {
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  items: [
+    {
+      item: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Item',
         required: true,
+      },
+      quantity: {
+        type: Number,
+        required: true,
+        min: 1,
+      },
+      subtotal: {
+        type: Number,
+        required: true,
+      },
     },
-    items: [
-        {
-            item:{
-                type: mongoose.Schema.Types.ObjectId,
-                ref:'Item',
-                required:true
-            },
-            quantity: Number,
-        }
-    ]
-})
+  ],
+  totalPrice:{
+    type: Number,
+  },
+  status: {
+    type: String,
+    enum: ['ordered', 'paid', 'cancelled', 'completed'],
+    required: true,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
+  completedAt: Date,
+});
 
-const Order = mongoose.model('Order',orderSchema)
+const Order = mongoose.model('Order', orderSchema);
 
 export default Order;

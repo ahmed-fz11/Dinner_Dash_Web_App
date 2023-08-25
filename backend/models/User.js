@@ -20,7 +20,20 @@ const userSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:'Order'
     }
-  ]
+  ],
+  cart: [
+    {
+      item: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Item',
+      },
+      quantity: {
+        type: Number,
+        min: 1,
+        default: 1,
+      },
+    },
+  ],
 });
 
 const User = mongoose.model("User", userSchema);

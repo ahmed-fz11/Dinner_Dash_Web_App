@@ -16,13 +16,15 @@ const itemSchema = new mongoose.Schema({
     min: 0,
   },
   photoURI: String,
-  categories: {
-    type: [String],
-    required: true,
-  },
-  status: {
-    type: String,
-    enum: ["available", "not available"],
+  categories: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
+    },
+  ],
+  retired: { 
+    type: Boolean,
+    default: false,
   },
 });
 
