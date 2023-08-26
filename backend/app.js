@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import routes from './routes/index.js'
 //importing models
 import Item from "./models/Item.js";
 import User from "./models/User.js";
@@ -36,6 +37,8 @@ connectToDatabase();
 app.get('/', (req, res) => {
     res.send('Hello, Express!');
 })
-  
+
+app.use('/',routes)
+
 
 //defining more routes here after
