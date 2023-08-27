@@ -15,6 +15,15 @@ const userSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
+  password: {
+    type:String,
+    required: true
+  },
+  role: {
+    type: String,
+    enum : ['admin','user'],
+    required:true
+  },
   orders: [
     {
         type: mongoose.Schema.Types.ObjectId,

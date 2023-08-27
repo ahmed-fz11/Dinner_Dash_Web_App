@@ -34,4 +34,21 @@ export const getItemsbyCategory = async (req,res)=>{
     }
 }
 
+export const getItem = async (req,res)=>{
+    try {
+        const itemId = req.params.itemId;
+    
+        const retrievedItem = await Item.findOne({
+            _id:itemId
+        })
+        if (!retrievedItem) {
+          return res.status(404).json({ error: "Item not found" });
+        }
+        res.json(retrievedItem); //sending back the retrieved item
+      } catch (error) {
+        console.error("Error getting item:", error);
+        res.status(500).json({ error: "Internal server error" });
+      }
+}
+
 //similiar funcs for other item related operations
