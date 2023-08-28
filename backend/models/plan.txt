@@ -63,3 +63,17 @@ app.post('/items', async (req, res) => {
 //cart api only hit when logged in user sends request
 //unauthenticated user cart is dealt on frontend
 //when user log in, if local storage has cart items, populate cart 
+
+//req object is basically a cart sent to backend from frontend
+    //req object has array of objects. each object has 3 things: *itemId *quantity *subtotal
+    //req object also has userId
+    //req object also has totalPrice
+
+    //e.g JSON order object sent from frontend
+    // const orderObj = {
+    //     user:'userId',
+    //     items: [{item,quantity,subtotal}],
+    //     totalPrice:'25000'
+    // }
+
+    //task of this function is to save things from this orderObj sent from frontend to mongodb according to Order schema defined
