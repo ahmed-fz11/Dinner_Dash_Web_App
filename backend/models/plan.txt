@@ -58,3 +58,8 @@ app.post('/items', async (req, res) => {
       res.status(500).json({ error: "Internal server error" });
     }
   });
+
+
+//cart api only hit when logged in user sends request
+//unauthenticated user cart is dealt on frontend
+//when user log in, if local storage has cart items, populate cart 

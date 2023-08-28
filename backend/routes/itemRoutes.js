@@ -6,5 +6,6 @@ const router = express.Router();
 router.get("/",getAllItems);
 router.get('/:itemId',getItem)
 router.get("/:category",getItemsbyCategory)
+//getAllCategories
 
 export default router;
