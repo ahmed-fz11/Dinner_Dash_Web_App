@@ -1,0 +1,65 @@
+cart schema
+{
+    user is optional 
+    when user only then checkout
+
+    items: [
+        {
+            item:{
+                type: mongoose.Schema.Types.ObjectId,
+                ref:'Item',
+                required:true
+            },
+            quantity: Number,
+        }
+    ]
+}
+
+when a user checkout(only if he is logged in )  cart is cleared and order db is filled with same items[] array
+
+=>item description page?
+
+// app.get('/',async (req, res) => {
+//     try
+//     {
+//         const newItem = new Item({
+//             title:"Mango",
+//             description:"I am ambb class",
+//             price:2000
+//         })
+//         await newItem.save();
+
+//         res.status(201).json(newItem);
+//     }
+//     catch(error)
+//     {
+//         console.error("Error creating item: ",error)
+//         res.status(500).json({error:"Internal server error"})
+//     }
+// });
+
+app.post('/items', async (req, res) => {
+    try {
+      const { title, description, price } = req.body;
+  
+      // Create a new item using the Item model
+      const newItem = new Item({
+        title,
+        description,
+        price,
+      });
+  
+      // Save the item to the database
+      await newItem.save();
+  
+      res.status(201).json(newItem); // Respond with the created item
+    } catch (error) {
+      console.error("Error creating item:", error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+
+//cart api only hit when logged in user sends request
+//unauthenticated user cart is dealt on frontend
+//when user log in, if local storage has cart items, populate cart 
