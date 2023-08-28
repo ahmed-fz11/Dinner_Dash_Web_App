@@ -17,14 +17,16 @@ export const getAllItems = async (req,res)=>{
 export const getItemsbyCategory = async (req,res)=>{
     try{
         const {category} = req.params;
-        const foundCategory = Category.findOne({name:category})
+        const foundCategory = await Category.findOne({name:category})
 
         if(!foundCategory)
         {
             return res.status(404).json({error: 'Category not found'})
         }
+        const itemIds = foundCategory.items;
+        console.log(itemIds)
 
-        const categoryItems = Item.find({categories:foundCategory._id});
+        const categoryItems = await Item.find({ _id: { $in: itemIds } });
         res.json(categoryItems);
     }
     catch(error)

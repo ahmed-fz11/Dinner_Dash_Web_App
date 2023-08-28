@@ -30,7 +30,7 @@ const orderSchema = new mongoose.Schema({
   status: {
     type: String,
     enum: ['ordered', 'paid', 'cancelled', 'completed'],
-    required: true,
+    default: 'ordered'
   },
   timestamp: {
     type: Date,

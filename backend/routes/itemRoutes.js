@@ -4,8 +4,7 @@ import { getAllItems,getItem,getItemsbyCategory } from '../controllers/itemContr
 const router = express.Router();
 
 router.get("/",getAllItems);
-router.get('/:itemId',getItem)
-router.get("/:category",getItemsbyCategory)
-//getAllCategories
+router.get('/item/:itemId',getItem)
+router.get("/category/:category",getItemsbyCategory)
 
 export default router;
