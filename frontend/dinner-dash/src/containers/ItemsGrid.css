@@ -1,0 +1,34 @@
+.img{
+    width: 5vw;
+    height: auto;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns */
+    gap: 20px;
+    max-width: 100%;
+    overflow: auto;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: center;
+  }
+  
+  /* Add responsive styles */
+  @media (max-width: 768px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+  }
+
+  .con1{
+    margin-left: 25vw;
+  }
+  
+  

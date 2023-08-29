@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import routes from './routes/index.js'
+import cors from 'cors'
 //importing models
 import Item from "./models/Item.js";
 import User from "./models/User.js";
@@ -11,6 +12,7 @@ const dbURI = "mongodb://127.0.0.1:27017/dinnerdash";
 const app = express();
 const PORT = 3000;
 
+app.use(cors());
 app.use(express.json()); //parse incoming JSON requests
 
 const connectToDatabase = async () => {

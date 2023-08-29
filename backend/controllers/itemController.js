@@ -17,7 +17,7 @@ export const getAllItems = async (req,res)=>{
 export const getItemsbyCategory = async (req,res)=>{
     try{
         const {category} = req.params;
-        const foundCategory = await Category.findOne({name:category})
+        const foundCategory = await Category.findOne({_id:category})
 
         if(!foundCategory)
         {
@@ -49,6 +49,18 @@ export const getItem = async (req,res)=>{
         res.json(retrievedItem); //sending back the retrieved item
       } catch (error) {
         console.error("Error getting item:", error);
+        res.status(500).json({ error: "Internal server error" });
+      }
+}
+
+export const getAllCategories = async (req,res)=>{
+    try{
+        const categories = await Category.find();
+
+        res.json(categories); //array of categories returned
+    }
+    catch (error) {
+        console.error("Error fetching all categories:", error);
         res.status(500).json({ error: "Internal server error" });
       }
 }

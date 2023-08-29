@@ -1,20 +1,29 @@
 import React from "react";
+import UserNavbar from "./UserNavbar";
+import "./Home.css";
 
 const Home = () => {
   return (
-    <div className="container vw-100 vh-100 d-flex align-items-center justify-content-center flex-column">
-      <div className="d-flex align-items-center justify-content-center flex-column">
-        <img src="/public/images/Black logo - no background.png" alt="Logo" className="img-fluid w-25"/>
-      </div>
-      <div className="d-flex align-items-center justify-content-center flex-column">
-        <img
-          src="/public/images/homepage_food.jpg"
-          alt="Food Pic"
-          className="img-fluid w-50"
-        />
-      </div>
-      <div>
-        <button className="btn btn-primary">Order now</button>
+    <div className="con">
+      <UserNavbar />
+      <div className="container d-flex align-items-center justify-content-center flex-column border con2">
+        <div className="d-flex align-items-center justify-content-center flex-column border">
+          <img
+            src="/public/images/Black logo - no background.png"
+            alt="Logo"
+            className="img-fluid img1"
+          />
+        </div>
+        <div className="d-flex align-items-center justify-content-center flex-column border">
+          <img
+            src="/public/images/homepage_food.jpg"
+            alt="Food Pic"
+            className="img-fluid img2 mt-2"
+          />
+        </div>
+        <div>
+          <button className="btn btn-primary mt-2">Order now</button>
+        </div>
       </div>
     </div>
   );
