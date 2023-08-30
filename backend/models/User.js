@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { hashSync } from "bcrypt";
 
 const userSchema = mongoose.Schema({
   fullname: {
@@ -30,6 +31,11 @@ const userSchema = mongoose.Schema({
         ref:'Order'
     }
   ],
+});
+
+userSchema.pre('save', function (next) {
+  this.password = hashSync(this.password, 10);
+  next();
 });
 
 const User = mongoose.model("User", userSchema);

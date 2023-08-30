@@ -58,15 +58,6 @@ const Signup = () => {
               <input type='password' className='form-control' id='form4' />
             </div>
 
-            <div className='d-flex justify-content-center mb-4'>
-              <div className='form-check'>
-                <input className='form-check-input' type='checkbox' id='flexCheckDefault' />
-                <label className='form-check-label' htmlFor='flexCheckDefault'>
-                  I am an admin
-                </label>
-              </div>
-            </div>
-
             <button className='btn btn-primary w-100 mb-4'>Sign Up</button>
             <div>
                 <p className="mb-0 d-flex flex-column align-items-center mt-2">
