@@ -6,6 +6,8 @@ import {Routes,Route} from 'react-router-dom'
 import Signup from './containers/Signup'
 import Login from './containers/Login'
 import UserOrders from './containers/UserOrders'
+import AdminOrderDashboard from './containers/AdminOrderDashboard'
+
 
 function App() {
 
@@ -17,6 +19,7 @@ function App() {
       <Route path="/signup" element={<Signup/>} />
       <Route path="/login" element={<Login/>} />
       <Route path="/orders" element={<UserOrders/>} />
+      <Route path="/ordersdashboard" element={<AdminOrderDashboard/>} />
     </Routes>
   )
 }

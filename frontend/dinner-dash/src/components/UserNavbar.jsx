@@ -13,13 +13,13 @@ const UserNavbar = () => {
       setUser(currentUser);
     }
   }, []);
-  const handleLogoutClick = ()=>{
+  const handleLogoutClick = () => {
     setUser(null);
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    localStorage.removeItem('cart');
-    navigate('/');
-  }
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("cart");
+    navigate("/");
+  };
   return (
     <nav className="navbar navbar-expand-lg bg-secondary">
       <div className="container-fluid">
@@ -60,19 +60,27 @@ const UserNavbar = () => {
                 Cart
               </Link>
             </li>
-            {user && (
-                <li className="nav-item">
+            {user && user.role == "user" && (
+              <li className="nav-item">
                 <Link className="nav-link" to="/orders">
                   Orders
                 </Link>
               </li>
             )}
-            {/* {user && user.role=='admin'} */}
+            {user && user.role == "admin" && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/ordersdashboard">
+                  Orders
+                </Link>
+              </li>
+            )}
           </ul>
           {user ? (
             <>
-            <p className="m-2">Welcome: {user.fullname}</p>
-            <button className="btn btn-danger" onClick={handleLogoutClick}>Logout</button>
+              <p className="m-2">Welcome: {user.fullname}</p>
+              <button className="btn btn-danger" onClick={handleLogoutClick}>
+                Logout
+              </button>
             </>
           ) : (
             <button className="btn btn-primary" onClick={handleLoginClick}>

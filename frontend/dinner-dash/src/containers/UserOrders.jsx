@@ -41,7 +41,7 @@ const UserOrders = () => {
   };
 
   return (
-    <div className="vw-100">
+    <div className="min-vw-100 min-vh-100">
     <UserNavbar/>
     <div className="container mt-5">
       <h1 className="mb-4">Order History</h1>

@@ -39,6 +39,7 @@ const orderSchema = new mongoose.Schema({
     default: Date.now,
   },
   completedAt: Date,
+  cancelledAt: Date,
 });
 
 const Order = mongoose.model('Order', orderSchema);
