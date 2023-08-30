@@ -29,7 +29,8 @@ export const loginUser = (req,res)=>{
         return res.status(200).send({
             success:true,
             message:'Logged in successfully',
-            token: 'Bearer ' + token 
+            token: 'Bearer ' + token,
+            user: {userid:user._id,fullname:user.fullname,email:user.email}
         })
     })
 }
