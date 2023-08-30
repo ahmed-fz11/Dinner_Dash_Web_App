@@ -7,6 +7,6 @@ const router = express.Router();
 //router.post('/order',authenticateJWT,placeOrder) //placing order
 
 router.post('/orders',authenticateJWT,placeOrder) //placing order //for testing
-router.get('/orders',getUserOrders) //getting all orders of this specific user
+router.get('/orders',authenticateJWT,getUserOrders) //getting all orders of this specific user
 
 export default router;
