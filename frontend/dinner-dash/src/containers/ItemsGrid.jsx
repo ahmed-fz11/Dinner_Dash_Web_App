@@ -34,6 +34,32 @@ const ItemsGrid = () => {
     setSelectedCategory(categoryId);
   };
 
+  const handleAddToCartClick = (itemId, price,title) => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || { items: [] };
+  
+    // Check if the item already exists in the cart
+    const existingItem = cart.items.find(item => item.item === itemId);
+  
+    if (existingItem) {
+      // Item already exists, increase quantity and update subtotal
+      existingItem.quantity += 1;
+      existingItem.subtotal += price;
+    } else {
+      // Item doesn't exist, add it to the cart
+      cart.items.push({
+        item: itemId,
+        quantity: 1,
+        subtotal: price,
+        title:title,
+        price:price,
+      });
+    }
+  
+    // Update the cart in local storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+  };
+  
+
   return (
     <div className='d-flex flex-column border con1'>
       <div className="categories-button-container d-flex">
@@ -56,6 +82,7 @@ const ItemsGrid = () => {
               <h3>{item.title}</h3>
               <p>{item.description}</p>
               <p>Price: ${item.price}</p>
+              <button className="btn btn-success" onClick={()=>handleAddToCartClick(item._id,item.price,item.title)}>Add to cart</button>
             </div>
           ))}
         </div>

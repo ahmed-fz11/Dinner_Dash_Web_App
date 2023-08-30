@@ -1,10 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const UserNavbar = () => {
+    const navigate = useNavigate();
+    const handleLoginClick = ()=>{
+        navigate('/login')
+    }
   return (
-    <nav class="navbar navbar-expand-lg bg-secondary">
-      <div class="container-fluid">
+    <nav className="navbar navbar-expand-lg bg-secondary">
+      <div className="container-fluid">
         <a className="navbar-brand">
           <img
             src="/public/images/Black logo - no background.png"
@@ -15,7 +19,7 @@ const UserNavbar = () => {
           />
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -23,23 +27,27 @@ const UserNavbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
             </li>
-            <li class="nav-item">
-              <Link className="nav-link" to="/menu">Menu</Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/menu">
+                Menu
+              </Link>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
+            <li className="nav-item">
+              <Link className="nav-link" to="/cart">
                 Cart
-              </a>
+              </Link>
             </li>
           </ul>
-          <button className="btn btn-primary">Login</button>
+          <button className="btn btn-primary" onClick={handleLoginClick}>Login</button>
         </div>
       </div>
     </nav>
