@@ -1,9 +1,48 @@
 import React, { useState, useEffect } from "react";
 import UserNavbar from "../components/UserNavbar";
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom'
+
 
 const Cart = () => {
+  const [user, setUser] = useState(null);
   const [cart, setCart] = useState({ items: [] });
   const [total, setTotal] = useState(0);
+  const navigate = useNavigate();
+
+    function addAuth(){
+        const token = JSON.parse(localStorage.getItem("token"));
+        const headers = {
+            authorization:token
+        }
+        return headers;
+    }
+
+  const handleCheckout = ()=>{
+
+    const order = {
+        user:user.userid,
+        totalPrice:total,
+        items:cart.items
+    }
+    // const token = JSON.parse(localSt
+    
+    const token = JSON.parse(localStorage.getItem("token"));
+
+  const headers = {
+    Authorization: `${token}`
+  };
+
+
+    axios.post('http://localhost:3000/user/orders',order,{headers})
+    .then(response=>{
+        localStorage.removeItem('cart')
+        navigate('/')
+    })
+    .catch(error=>{
+        console.log(error)
+    })
+  }
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || {
@@ -11,6 +50,10 @@ const Cart = () => {
     };
     setCart(storedCart);
     calculateTotal(storedCart);
+    const currentUser = JSON.parse(localStorage.getItem("user")) || null;
+    if (currentUser) {
+      setUser(currentUser);
+    }
   }, []);
 
   const handleQuantityIncrease = (itemId) => {
@@ -80,6 +123,9 @@ const Cart = () => {
             <div className="card card-item">
               <h3>Total: ${total}</h3>
             </div>
+            {user && (cart.items.length > 0) && (
+                <button className="btn btn-danger" onClick={handleCheckout}>Checkout</button>
+            )}
           </div>
         ) : (
           <p>Your cart is currently empty.</p>

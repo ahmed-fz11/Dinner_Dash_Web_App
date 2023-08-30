@@ -1,11 +1,25 @@
-import {React,useEffect} from "react";
+import { React, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const UserNavbar = () => {
-    const navigate = useNavigate();
-    const handleLoginClick = ()=>{
-        navigate('/login')
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("user")) || null;
+    if (currentUser) {
+      setUser(currentUser);
     }
+  }, []);
+  const handleLogoutClick = ()=>{
+    setUser(null);
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('cart');
+    navigate('/');
+  }
   return (
     <nav className="navbar navbar-expand-lg bg-secondary">
       <div className="container-fluid">
@@ -46,8 +60,25 @@ const UserNavbar = () => {
                 Cart
               </Link>
             </li>
+            {user && (
+                <li className="nav-item">
+                <Link className="nav-link" to="/orders">
+                  Orders
+                </Link>
+              </li>
+            )}
+            {/* {user && user.role=='admin'} */}
           </ul>
-          <button className="btn btn-primary" onClick={handleLoginClick}>Login</button>
+          {user ? (
+            <>
+            <p className="m-2">Welcome: {user.fullname}</p>
+            <button className="btn btn-danger" onClick={handleLogoutClick}>Logout</button>
+            </>
+          ) : (
+            <button className="btn btn-primary" onClick={handleLoginClick}>
+              Login
+            </button>
+          )}
         </div>
       </div>
     </nav>

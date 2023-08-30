@@ -30,7 +30,7 @@ export const loginUser = (req,res)=>{
             success:true,
             message:'Logged in successfully',
             token: 'Bearer ' + token,
-            user: {userid:user._id,fullname:user.fullname,email:user.email}
+            user: {userid:user._id,fullname:user.fullname,email:user.email,role:user.role}
         })
     })
 }
