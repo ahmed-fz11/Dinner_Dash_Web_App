@@ -74,6 +74,13 @@ const UserNavbar = () => {
                 </Link>
               </li>
             )}
+            {user && user.role == "admin" && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/createitem">
+                  Manage Items
+                </Link>
+              </li>
+            )}
           </ul>
           {user ? (
             <>

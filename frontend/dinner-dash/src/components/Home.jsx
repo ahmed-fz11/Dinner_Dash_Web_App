@@ -4,7 +4,7 @@ import "./Home.css";
 
 const Home = () => {
   return (
-    <div className="con">
+    <div className="min-vh-100 min-vw-100 ">
       <UserNavbar />
       <div className="container d-flex align-items-center justify-content-center flex-column border con2">
         <div className="d-flex align-items-center justify-content-center flex-column border">

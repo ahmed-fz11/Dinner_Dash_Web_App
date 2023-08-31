@@ -6,12 +6,8 @@ import User from "../models/User.js";
 
 export const createItem = async (req, res) => {
   try {
-    const { title, description, price } = req.body; //image url param left
-    const newItem = new Item({
-      title,
-      description,
-      price,
-    });
+    const item = req.body; 
+    const newItem = new Item(item);
     await newItem.save();
 
     res.status(201).json(newItem); // Responding with the created item

@@ -7,6 +7,7 @@ import Signup from './containers/Signup'
 import Login from './containers/Login'
 import UserOrders from './containers/UserOrders'
 import AdminOrderDashboard from './containers/AdminOrderDashboard'
+import AdminCreateItem from './containers/AdminCreateItem'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path="/login" element={<Login/>} />
       <Route path="/orders" element={<UserOrders/>} />
       <Route path="/ordersdashboard" element={<AdminOrderDashboard/>} />
+      <Route path="/createitem" element={<AdminCreateItem/>} />
     </Routes>
   )
 }

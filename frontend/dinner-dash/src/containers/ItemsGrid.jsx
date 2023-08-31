@@ -83,6 +83,7 @@ const ItemsGrid = () => {
               <p>{item.description}</p>
               <p>Price: ${item.price}</p>
               <button className="btn btn-success" onClick={()=>handleAddToCartClick(item._id,item.price,item.title)}>Add to cart</button>
+              {}
             </div>
           ))}
         </div>
