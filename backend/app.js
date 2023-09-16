@@ -35,10 +35,6 @@ const connectToDatabase = async () => {
 
 connectToDatabase();
 
-app.get('/', (req, res) => {
-    res.send('Hello, Express!');
-})
-
 app.use('/',routes)
 
 
