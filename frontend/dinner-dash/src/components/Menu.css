@@ -1,4 +1,11 @@
 .img1{
-    width: 30vw;
+    width: 25vw;
     height: auto;
+}
+
+.pg1{
+    background-image: url('/public/images/black-bg.jpg'); /* Specify the path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }

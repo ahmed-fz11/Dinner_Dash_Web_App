@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Person from 'react-bootstrap-icons/dist/icons/person';
 
 const UserNavbar = () => {
   const [user, setUser] = useState(null);
@@ -84,8 +85,8 @@ const UserNavbar = () => {
           </ul>
           {user ? (
             <>
-              <p className="m-2">Welcome: {user.fullname}</p>
-              <button className="btn btn-danger" onClick={handleLogoutClick}>
+              <p className="m-2 text-white font-weight-bold">{<Person color="white" size={32} className="" />} {user.fullname}</p>
+              <button className="btn btn-danger mx-2" onClick={handleLogoutClick}>
                 Logout
               </button>
             </>

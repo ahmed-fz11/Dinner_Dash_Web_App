@@ -70,10 +70,7 @@ const Login = () => {
         </h1>
 
         <p className='px-3' style={{color: 'hsl(218, 81%, 85%)'}}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-          quibusdam tempora at cupiditate quis eum maiores libero
-          veritatis? Dicta facilis sint aliquid ipsum atque?
+        Welcome to our food ordering platform! Whether you're a new user or a returning customer, we're here to make your culinary journey seamless. Sign up to explore a world of delicious possibilities or log in to savor your favorite flavors. Join us today and embark on a delightful food adventure!
         </p>
 
       </div>

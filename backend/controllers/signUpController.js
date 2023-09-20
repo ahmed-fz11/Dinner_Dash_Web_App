@@ -13,6 +13,7 @@ export const registerUser = (req, res) => {
 
       // Create a new user instance
       const user = new User(req.body);
+      // console.log("here")
 
       // Save the new user
       return user.save();

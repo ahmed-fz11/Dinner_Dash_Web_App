@@ -61,8 +61,8 @@ const ItemsGrid = () => {
   
 
   return (
-    <div className='d-flex flex-column border con1'>
-      <div className="categories-button-container d-flex">
+    <div className='d-flex flex-column con1 p-4'>
+      <div className="categories-button-container d-flex justify-content-center mb-2">
         <button className={`btn btn-primary m-1 ${selectedCategory === null ? 'active' : ''}`} onClick={() => handleCategoryClick(null)}>All</button>
         {categories.map(category => (
           <button
@@ -77,7 +77,7 @@ const ItemsGrid = () => {
       <div className="items-container">
         <div className="card-grid">
           {items.map(item => (
-            <div key={item._id} className="card">
+            <div key={item._id} className="cardo">
               <img src={item.photoURL} alt={item.title} className='img'/>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
