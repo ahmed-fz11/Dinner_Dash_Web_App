@@ -2,15 +2,12 @@ import Item from "../models/Item.js";
 import Category from "../models/Category.js";
 import Order from "../models/Order.js";
 import mongoose from "mongoose";
+import User from "../models/User.js";
 
 export const createItem = async (req, res) => {
   try {
-    const { title, description, price } = req.body; //image url param left
-    const newItem = new Item({
-      title,
-      description,
-      price,
-    });
+    const item = req.body; 
+    const newItem = new Item(item);
     await newItem.save();
 
     res.status(201).json(newItem); // Responding with the created item
@@ -162,4 +159,17 @@ export const assignRemoveItemsFromCategory = async (req, res) => {
         console.error("Error assigning/removing items from category:", error);
         res.status(500).json({ error: "Internal server error" });
     }
+
 };
+
+export const getUser = async (req,res)=>{
+  try{
+    const userid = req.params.userid;
+    const user = await User.findOne({_id:userid});
+    res.json(user);
+  }
+  catch (error) {
+        console.error("Error fetching user:", error);
+        res.status(500).json({ error: "Internal server error" });
+      }
+}

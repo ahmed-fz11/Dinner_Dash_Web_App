@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { hashSync } from "bcrypt";
 
 const userSchema = mongoose.Schema({
   fullname: {
@@ -30,19 +31,11 @@ const userSchema = mongoose.Schema({
         ref:'Order'
     }
   ],
-  cart: [
-    {
-      item: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Item',
-      },
-      quantity: {
-        type: Number,
-        min: 1,
-        default: 1,
-      },
-    },
-  ],
+});
+
+userSchema.pre('save', function (next) {
+  this.password = hashSync(this.password, 10);
+  next();
 });
 
 const User = mongoose.model("User", userSchema);

@@ -1,0 +1,32 @@
+.con {
+  width: 100vw;
+  height: 100vh;
+}
+
+.img1 {
+  width: 20vw;
+  height: auto;
+}
+.img2 {
+  width: 40vw;
+  height: auto;
+  border-radius: 1.5vw;
+}
+
+.head-text {
+  font-size: 5vw;
+  color: rgba(255, 255, 255, 0.226);
+}
+
+.p-text {
+  font-size: 1.5vw;
+  font-weight: 500;
+  color: white;
+}
+
+.pg {
+  background-image: url("/public/images/bg-food-3.jpg"); /* Specify the path to your background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

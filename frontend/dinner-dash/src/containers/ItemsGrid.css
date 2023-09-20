@@ -1,0 +1,32 @@
+.img {
+  width: 5vw;
+  height: auto;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 3 columns */
+  gap: 20px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.cardo {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #ffffff67;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  max-width: 30vw; /* Adjust the max-width to your liking */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+

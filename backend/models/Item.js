@@ -15,7 +15,10 @@ const itemSchema = new mongoose.Schema({
     required: true,
     min: 0,
   },
-  photoURI: String,
+  photoURL: {
+    type: String,
+    default: 'https://i.ibb.co/8438Xbj/food-items-vector-609544.jpg'
+  },
   categories: [
     {
       type: mongoose.Schema.Types.ObjectId,

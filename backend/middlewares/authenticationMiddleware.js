@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 export const authenticateJWT = (req,res,next)=>{
     const token = req.headers.authorization?.split(' ')[1];
-
+    // console.log("token after : ",token)
     if(!token){
         return res.status(401).json({error: 'unauthorized'})
     }
